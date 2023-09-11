@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "gpt-pdf-7c819",
+    "dev": "gpt-pdf-7c819"
+  },
+  "targets": {},
+  "etags": {}
+}

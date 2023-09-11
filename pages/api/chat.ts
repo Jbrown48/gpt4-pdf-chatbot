@@ -36,7 +36,7 @@ export default async function handler(
       {
         pineconeIndex: index,
         textKey: 'text',
-        namespace: PINECONE_NAME_SPACE, //namespace comes from your config folder
+        // namespace: PINECONE_NAME_SPACE, //namespace comes from your config folder
       },
     );
 
@@ -54,7 +54,7 @@ export default async function handler(
     //Ask a question using chat history
     const response = await chain.call({
       question: sanitizedQuestion,
-      chat_history: pastMessages
+      chat_history: pastMessages,
     });
 
     console.log('response', response);

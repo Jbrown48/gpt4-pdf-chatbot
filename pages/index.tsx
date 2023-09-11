@@ -12,8 +12,15 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import { FIREBASE_CONFIG } from '@/config/firebase';
+import { initializeApp } from 'firebase/app';
+import { getAnalytics } from 'firebase/analytics';
 
 export default function Home() {
+  // Initialize Firebase
+  const app = initializeApp(FIREBASE_CONFIG);
+  const analytics = getAnalytics(app);
+
   const [query, setQuery] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
