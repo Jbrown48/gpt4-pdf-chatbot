@@ -14,12 +14,21 @@ import {
 } from '@/components/ui/accordion';
 import { FIREBASE_CONFIG } from '@/config/firebase';
 import { initializeApp } from 'firebase/app';
-import { getAnalytics } from 'firebase/analytics';
+import { getAnalytics, isSupported } from 'firebase/analytics';
 
 export default function Home() {
+  let app = null;
+  let analytics = null;
+
   // Initialize Firebase
-  const app = initializeApp(FIREBASE_CONFIG);
-  const analytics = getAnalytics(app);
+  // const app = initializeApp(FIREBASE_CONFIG);
+  // const analytics = getAnalytics(app);
+  isSupported().then((result) => {
+    if (result) {
+      app = initializeApp(FIREBASE_CONFIG);
+      analytics = getAnalytics(app);
+    }
+  });
 
   const [query, setQuery] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
