@@ -15,10 +15,12 @@ import {
 import { FIREBASE_CONFIG } from '@/config/firebase';
 import { initializeApp } from 'firebase/app';
 import { getAnalytics, isSupported } from 'firebase/analytics';
+// import { getAuth } from 'firebase/auth';
 
 export default function Home() {
   let app = null;
   let analytics = null;
+  // let auth = null;
 
   // Initialize Firebase
   // const app = initializeApp(FIREBASE_CONFIG);
@@ -27,6 +29,7 @@ export default function Home() {
     if (result) {
       app = initializeApp(FIREBASE_CONFIG);
       analytics = getAnalytics(app);
+      // auth = getAuth(app);
     }
   });
 
@@ -141,7 +144,7 @@ export default function Home() {
       <Layout>
         <div className="mx-auto flex flex-col gap-4">
           <h1 className="text-2xl font-bold leading-[1.1] tracking-tighter text-center">
-            Chat With Your Docs
+            Chat With Code of Federal Regulation - Title 49 - Vol 1-9
           </h1>
           <main className={styles.main}>
             <div className={styles.cloud}>
@@ -240,7 +243,7 @@ export default function Home() {
                     placeholder={
                       loading
                         ? 'Waiting for response...'
-                        : 'What is this legal case about?'
+                        : 'What are the current regulations for hazardous material?'
                     }
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
@@ -277,8 +280,8 @@ export default function Home() {
           </main>
         </div>
         <footer className="m-auto p-4">
-          <a href="https://twitter.com/mayowaoshin">
-            Powered by LangChainAI. Demo built by Mayo (Twitter: @mayowaoshin).
+          <a href="https://twitter.com/DadDocBrown">
+            Powered by LangChainAI. Demo built by Doc (Twitter: @DadDocBrown).
           </a>
         </footer>
       </Layout>
